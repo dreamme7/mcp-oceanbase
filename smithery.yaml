@@ -1,0 +1,40 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - user
+      - password
+      - database
+    properties:
+      host:
+        type: string
+        default: localhost
+        description: Database host
+      port:
+        type: number
+        default: 2881
+        description: Database port
+      user:
+        type: string
+        description: Database user
+      password:
+        type: string
+        description: Database password
+      database:
+        type: string
+        description: Database name
+    description: OceanBase connection settings
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({ command: 'oceanbase_mcp_server', args: ['--transport', 'stdio'], env: { OB_HOST: config.host, OB_PORT: String(config.port), OB_USER: config.user, OB_PASSWORD: config.password, OB_DATABASE: config.database } })
+  exampleConfig:
+    host: localhost
+    port: 2881
+    user: root
+    password: examplePass
+    database: test_db

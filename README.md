@@ -1,5 +1,7 @@
 # mcp-oceanbase
 
+[![smithery badge](https://smithery.ai/badge/@dreamme7/mcp-oceanbase)](https://smithery.ai/server/@dreamme7/mcp-oceanbase)
+
 MCP Server for OceanBase database and its tools
 
 English | [简体中文](README_CN.md)
